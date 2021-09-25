@@ -17,10 +17,11 @@ public class Produto {
     private Integer id;
 
     @NotNull
-    @Size(min = 5, max = 100)
+    @Size(min=5,max=100,message="O campo deve conter no mínimo 5 e no máximo 100 caracteres")
     private String nome;
 
     @NotNull
+    @Size(min=5,max=100,message="O campo deve conter no mínimo 5 e no máximo 100 caracteres")
     private String descricao;
 
     @NotNull
