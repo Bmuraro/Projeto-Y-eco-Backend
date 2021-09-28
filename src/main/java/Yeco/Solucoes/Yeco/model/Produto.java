@@ -28,7 +28,7 @@ public class Produto {
     private Double valor;
 
     @NotNull
-    private Integer quantidade;
+    private String quantidade;
 
     public long getId() {
         return id;
@@ -62,11 +62,11 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Integer getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 }

@@ -64,7 +64,7 @@ public class CategoriaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deletePostagem (@PathVariable long id) {
+	public void deleteCategoria (@PathVariable long id) {
 		categoriaRepository.deleteById(id);
 	}
 

@@ -24,33 +24,45 @@ import Yeco.Solucoes.Yeco.repository.ProdutoRepository;
 public class ProdutoController {
 
     @Autowired
-    private ProdutoRepository repository;
+    private ProdutoRepository produtoRepository;
 
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
-        return ResponseEntity.ok(repository.findAll());}
+        return ResponseEntity.ok(produtoRepository.findAll());}
         
      @GetMapping("/{id}")
      public ResponseEntity<Produto> getById(@PathVariable long id){
-    	 return repository.findById(id) 
+    	 return produtoRepository.findById(id) 
     			 .map(resposta -> ResponseEntity.ok(resposta))
     			 .orElse(ResponseEntity.notFound().build());
      }
      @GetMapping("nome/{nome}")
      public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome){
-    	 return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+    	 return ResponseEntity.ok(produtoRepository.findAllByNomeContainingIgnoreCase(nome));
+     }
+     @GetMapping("descricao/{descricao}")
+     public ResponseEntity<List<Produto>> getByDescricao(@PathVariable String descricao){
+    	 return ResponseEntity.ok(produtoRepository.findAllByDescricaoContainingIgnoreCase(descricao));
+     }
+     @GetMapping("valor/{valor}")
+     public ResponseEntity<List<Produto>> getByValor(@PathVariable Double valor){
+    	 return ResponseEntity.ok(produtoRepository.findAllByValorContainingIgnoreCase(valor));
+     }
+     @GetMapping("quantidade/{quantidade}")
+     public ResponseEntity<List<Produto>> getByQuantidade(@PathVariable Integer quantidade){
+    	 return ResponseEntity.ok(produtoRepository.findAllByQuantidadeContainingIgnoreCase(quantidade));
      }
      @PostMapping
      public ResponseEntity<Produto> postProduto(@RequestBody Produto produto){
-    	 return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produto));
+    	 return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
      }
      @PutMapping
      public ResponseEntity<Produto> putProduto(@RequestBody Produto produto){
-    	 return ResponseEntity.status(HttpStatus.OK).body(repository.save(produto));
+    	 return ResponseEntity.status(HttpStatus.OK).body(produtoRepository.save(produto));
      }
      @DeleteMapping("/{id}")
-     public void deletePostgram(@PathVariable long id){
-    	 repository.deleteById(id);
+     public void deleteProduto(@PathVariable long id){
+    	 produtoRepository.deleteById(id);
     	 
      }
 
