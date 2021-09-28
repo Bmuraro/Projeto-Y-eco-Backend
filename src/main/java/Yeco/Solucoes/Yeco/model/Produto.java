@@ -14,7 +14,7 @@ public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private long id;
 
     @NotNull
     @Size(min=5,max=100,message="O campo deve conter no mínimo 5 e no máximo 100 caracteres")
@@ -28,13 +28,13 @@ public class Produto {
     private Double valor;
 
     @NotNull
-    private Integer quantidade;
+    private String quantidade;
 
-    public Integer getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -62,11 +62,11 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Integer getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Integer quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 }
